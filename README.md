@@ -1,7 +1,7 @@
-### Super Galactic Age Calculator
+### Doctor API Lookup
 
-# StellarAge - Lillian Theuma
-This portfolio is presented as a solution to the project guidelines described in
+# Doctor Lookup - Lillian Theuma
+
 
 # TABLE OF CONTENTS
 ```
