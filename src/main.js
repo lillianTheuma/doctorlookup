@@ -5,6 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 $(document).ready(function() {
-  let doctorService = new DoctorService();
-  console.log(doctorService.getDoctors());
+  (async () => {
+    let doctorService = new DoctorService();
+    const response = await doctorService.getDoctors("pain");
+    getElements(response);
+  })();
+
+  const getElements = function(response) {
+  };
 });
