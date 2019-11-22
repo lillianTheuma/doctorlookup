@@ -29,7 +29,7 @@ $(document).ready(function() {
           </div>
         </div> <!-- class = card -->
         `)
-    } else if (response.data[0].npi) {
+    } else if (response.data[0]) {
       response.data.forEach(function(doctor) {
         $("#output").append(`
           <div class="card">

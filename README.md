@@ -1,7 +1,7 @@
 ### Doctor API Lookup
 
 # Doctor Lookup - Lillian Theuma
-
+This repository is presented as a solution to the challenge presented within https://epicenter.epicodus.com/courses/459/code_reviews/1957 as part of the Epicodus coursework. This is a weekly code review, created independently, with no aid from teachers, or fellow students.
 
 # TABLE OF CONTENTS
 ```
@@ -12,9 +12,6 @@
   - Setup without GIT
 - Usage
 - Documentation
-  - Classes
-    -Pizza
-    -OrderList
 - Credits
 - License Information
 ```
@@ -34,11 +31,11 @@ AND
 * Open terminal, and navigate to a directory of your choice, then use the following command to clone files to local machine.
 
 ```
-git clone https://github.com/lillianTheuma/StellarAge
+git clone https://github.com/lillianTheuma/DoctorLookup
 ```
 
 ## Setup without GIT
-* Navigate to https://github.com/lillianTheuma/StellarAge on a web browser
+* Navigate to https://github.com/lillianTheuma/DoctorLookup on a web browser
 * Find the bottom labeled "clone or download", and click it to open a drop-down menu
 * Click Download Now on the drop-down menu
 * Extract contents of .zip folder into directory of your choice
@@ -46,41 +43,30 @@ git clone https://github.com/lillianTheuma/StellarAge
 # Usage
 Clone the repository from github
 
+Register with https://developer.betterdoctor.com/ and receive an API key.
+
+Create a file named .env in the root directory of this project
+> touch .env
+
+Open .env with your preferred text editor, and enter the following line
+> API_KEY = {YOUR KEY HERE}
+
+Be sure to fill in your API key (remove the {}s as you do)
+
+
 Install dependencies with the following command
-> npm Install
+> npm install
 
 Build the project to be hosted locally
 >npm run start
 
-Open the project by directing the web browser to localhost:8080 (127.0.0.1 port 8080)
-
-Test the Javascript if you'd like with the command
->npm test
+Open the project by directing the web browser to localhost:8080 (ip address 127.0.0.1 port 8080)
 
 
 # Documentation
 ## Specs
 
-#### User Inputs an age
-##### System outputs their age on various planets
 
-> [X] Mercury / Earth == 0.24
-
-> [X] Venus / Earth == 0.62
-
-> [X] Mars / Earth == 1.88
-
-> [X] Jupiter / Earth == 11.86
-
-Outputs follow the aforementioned ratios
-
-#### User receives data in terms of life expectancy
-
-> [X] Stores info on user regarding age, health, life expectancy
-
-> [X] Is able to create a new Age object for the users life expectancy
-
-> [X] Compares user age with user life expectancy
 
 # License
 * This repository is offered under the MIT license
