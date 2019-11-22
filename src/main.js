@@ -19,6 +19,7 @@ $(document).ready(function() {
         <div class="card">
         <div class="card-header">
         ${doctor.profile.first_name} ${doctor.profile.last_name}
+        <img class="card-img-top" src="${doctor.profile.image_url}" alt="image of doctor ${doctor.profile.first_name} ${doctor.profile.last_name}">
         </div> <!-- class = card-header -->
         <div class="card-body">
         Specialies:
@@ -39,8 +40,9 @@ $(document).ready(function() {
           <li class="list-group-item">
             ${specialty.description}
           </li>
-        `)
+        `);
       });
+
       doctor.practices.forEach(function(practice) {
         $("#"+doctor.profile.first_name+doctor.profile.last_name).append(`
           <li class="list-group-item">
@@ -53,7 +55,7 @@ $(document).ready(function() {
         `);
         practice.phones.forEach(function(phone) {
           $("#"+practice.uid).append(`
-            <li class="list-group-item> ${phone.type}: ${phone.number}"
+            <li class="list-group-item"> ${phone.type}: ${phone.number}</li>
           `);
         });
       });
