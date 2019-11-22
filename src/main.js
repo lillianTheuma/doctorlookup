@@ -1,7 +1,7 @@
-import DoctorService from './doctorService.js';
-import './styles.css';
 import $ from 'jquery';
+import DoctorService from './doctorService.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 
 $(document).ready(function() {
@@ -12,5 +12,6 @@ $(document).ready(function() {
   })();
 
   const getElements = function(response) {
+    console.log(response);
   };
 });
