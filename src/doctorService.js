@@ -5,8 +5,7 @@ export default class DoctorService {
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
     } catch(error) {
-      console.error("there was an error with your request:" + error.message);
-      return false;
+      return error;
     }
   }
 }

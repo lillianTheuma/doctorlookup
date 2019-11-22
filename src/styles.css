@@ -1,4 +1,4 @@
 .card {
   width: 30% !important;
-  height: auto;
+  float: left;
 }

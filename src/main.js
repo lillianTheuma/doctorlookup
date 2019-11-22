@@ -13,13 +13,24 @@ $(document).ready(function() {
       const response = await doctorService.getDoctors(search);
       getElements(response);
     })();
-  })
+  });
 
   const getElements = function(response) {
     $("#output").html("");
-    response = response.data;
-    if (response[0]) {
-      response.forEach(function(doctor) {
+    console.log(response);
+    if (response.meta.error) {
+      $("#output").html(`
+        <div class="card">
+          <div class="card-header">
+          <p class="card-text"> We were unable to process your request </p>
+          </div> <!-- class = card-header -->
+          <div class="card-body">
+            <p class="card-text"> Error ${response.meta.http_status_code}: ${response.meta.message} </p>
+          </div>
+        </div> <!-- class = card -->
+        `)
+    } else if (response.data[0].npi) {
+      response.data.forEach(function(doctor) {
         $("#output").append(`
           <div class="card">
           <div class="card-header">
@@ -36,45 +47,48 @@ $(document).ready(function() {
 
           </div> <!-- class = card-footer -->
           </div> <!-- class = card -->
+        `);
+        doctor.specialties.forEach(function(specialty) {
+          $("#"+doctor.npi).append(`
+            <li class="list-group-item">
+            ${specialty.name}
+            </li>
+            <li class="list-group-item">
+            ${specialty.description}
+            </li>
           `);
-          doctor.specialties.forEach(function(specialty) {
-            $("#"+doctor.npi).append(`
-              <li class="list-group-item">
-              ${specialty.name}
-              </li>
-              <li class="list-group-item">
-              ${specialty.description}
-              </li>
-              `);
-            });
-
-            doctor.practices.forEach(function(practice) {
-              $("#"+doctor.profile.first_name+doctor.profile.last_name).append(`
-                <li class="list-group-item">
-                Practice: ${practice.name} <br>
-                Location: ${practice.visit_address.street}, ${practice.visit_address.city} ${practice.visit_address.state}, ${practice.visit_address.zip}<br>
-                Phone Numbers:
-                <ul class="list-group list-group-flush" id="${practice.uid}"></ul>
-                Accepting New Patients: ${practice.accepts_new_patients}
-                `);
-                practice.phones.forEach(function(phone) {
-                  $("#"+practice.uid).append(`
-                    <li class="list-group-item"> ${phone.type}: ${phone.number}</li>
-                    `);
-                  });
-                });
-              });
-              console.log(response);
-            } else {
-              $("#output").html(`
-                <div class="card">
-                  <div class="card-header">
-                  </div> <!-- class = card-header -->
-                  <div class="card-body">
-                    <p class="card-text">We could not find any doctors meeting your criteria.</p>
-                  </div>
-                </div> <!-- class = card -->
-                `)
-            }
-          }
         });
+        doctor.practices.forEach(function(practice) {
+          if (practice.accepts_new_patients) {
+            practice.accepts_new_patients = "Yes";
+          } else {
+            practice.accepts_new_patients = "No";
+          }
+          $("#"+doctor.profile.first_name+doctor.profile.last_name).append(`
+            <li class="list-group-item">
+            Practice: ${practice.name} <br>
+            Location: ${practice.visit_address.street}, ${practice.visit_address.city} ${practice.visit_address.state}, ${practice.visit_address.zip}<br>
+            Phone Numbers:
+            <ul class="list-group list-group-flush" id="${practice.uid}"></ul>
+            Accepting New Patients: ${practice.accepts_new_patients}
+          `);
+          practice.phones.forEach(function(phone) {
+            $("#"+practice.uid).append(`
+              <li class="list-group-item"> ${phone.type}: ${phone.number}</li>
+            `);
+          });
+        });
+      });
+    } else {
+      $("#output").html(`
+        <div class="card">
+        <div class="card-header">
+        </div> <!-- class = card-header -->
+        <div class="card-body">
+        <p class="card-text">We could not find any doctors meeting your criteria.</p>
+        </div>
+        </div> <!-- class = card -->
+      `)
+    }
+  }
+});
