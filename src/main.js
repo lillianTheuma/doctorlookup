@@ -17,7 +17,6 @@ $(document).ready(function() {
 
   const getElements = function(response) {
     $("#output").html("");
-    console.log(response);
     if (response.meta.error) {
       $("#output").html(`
         <div class="card">
@@ -28,7 +27,7 @@ $(document).ready(function() {
             <p class="card-text"> Error ${response.meta.http_status_code}: ${response.meta.message} </p>
           </div>
         </div> <!-- class = card -->
-        `)
+        `);
     } else if (response.data[0]) {
       response.data.forEach(function(doctor) {
         $("#output").append(`
@@ -88,7 +87,7 @@ $(document).ready(function() {
         <p class="card-text">We could not find any doctors meeting your criteria.</p>
         </div>
         </div> <!-- class = card -->
-      `)
+      `);
     }
-  }
+  };
 });
