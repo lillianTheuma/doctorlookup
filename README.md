@@ -16,7 +16,7 @@ This repository is presented as a solution to the challenge presented within htt
 - License Information
 ```
 ## Repository
-* This project can be found at https://github.com/lillianTheuma/Portfolio
+* This project can be found at https://github.com/lillianTheuma/DoctorLookup
 
 ## Requirements
 * A FTP server
@@ -74,4 +74,4 @@ Open the project by directing the web browser to localhost:8080 (ip address 127.
 See LICENSE file for additional details regarding license.
 
 ###### Lillian Theuma
-###### Epicodus Code Review
+###### Epicodus Code Review - DoctorLookup
